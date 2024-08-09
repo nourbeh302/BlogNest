@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  padding-inline: 16px;
+
+  @media (width > 525px) {
+    padding-inline: 32px;
+  }
+
+  @media (width > 880px) {
+    padding-inline: max(16px, 16%);
+  }
+  padding-block: 32px;
+}
+
+body {
+  font-family: "Satoshi", sans-serif;
+}

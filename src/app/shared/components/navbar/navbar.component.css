@@ -1,0 +1,14 @@
+.navbar {
+  background: grey;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul.navbar-navigation {
+  display: flex;
+  gap: 32px;
+}
+
+li.navbar-item {
+  list-style-type: none;
+}
