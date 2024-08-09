@@ -1,0 +1,16 @@
+.blog-posted-by {
+  margin-block-start: 12px;
+}
+
+.blog-posted-on {
+  margin-block-end: 64px;
+}
+
+.blog-image {
+  width: 100%;
+  margin-block-end: 24px;
+}
+
+.blog-description {
+  line-height: 1.7rem;
+}

@@ -1,16 +1,14 @@
 <nav class="navbar container">
-  <div class="navbar-brand">BlogNest</div>
+  <div class="navbar-brand">{{ title }}</div>
   <div class="navbar-collapse">
     <ul class="navbar-navigation">
+      @for (link of links; track $index) {
       <li class="navbar-item">
-        <a routerLink="#" class="navbar-link">Hello</a>
+        <a [routerLink]="link.path" class="navbar-link">{{
+          link.displayName
+        }}</a>
       </li>
-      <li class="navbar-item">
-        <a routerLink="#" class="navbar-link">Hello</a>
-      </li>
-      <li class="navbar-item">
-        <a routerLink="#" class="navbar-link">Hello</a>
-      </li>
+      }
     </ul>
   </div>
 </nav>

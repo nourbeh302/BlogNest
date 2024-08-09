@@ -1,5 +1,15 @@
+:root {
+  --text-clr-muted: hsl(0, 0%, 55%);
+  --text-ff-heading: "Cabinet Grotesk", sans-serif;
+  --text-ff-paragraph: "Satoshi", sans-serif;
+}
+
+body {
+  font-family: var(--text-ff-paragraph);
+}
+
 .heading {
-  font-family: "Cabinet Grotesk", sans-serif;
+  font-family: var(--text-ff-heading);
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -12,4 +22,8 @@
 .heading-02 {
   font-size: 2.5rem;
   font-size: clamp(2.5rem, 2.4rem + 0.5vw, 3rem);
+}
+
+.text-muted {
+  color: var(--text-clr-muted);
 }

@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { SharedModule } from '../../../../shared/shared.module';
 import { FeedHeadingComponent } from '../components/feed-heading/feed-heading.component';
 import { RouterModule } from '@angular/router';
+import { FeedCtaComponent } from '../components/feed-cta/feed-cta.component';
+import { Blog } from '../../../../core/models/blog';
 
 @Component({
   selector: 'app-feed',
   standalone: true,
-  imports: [SharedModule, FeedHeadingComponent],
+  imports: [SharedModule, FeedHeadingComponent, FeedCtaComponent],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.css',
 })
@@ -20,6 +22,7 @@ export class FeedComponent {
       imgSrc:
         'https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Angular', 'Performance', 'Optimization', 'Web Development'],
+      postedOn: new Date(),
     },
     {
       id: 2,
@@ -29,6 +32,7 @@ export class FeedComponent {
       imgSrc:
         'https://images.unsplash.com/photo-1486286701208-1d58e9338013?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Football', 'Sports', 'History', 'Tactics'],
+      postedOn: new Date(),
     },
     {
       id: 3,
@@ -39,6 +43,7 @@ export class FeedComponent {
       imgSrc:
         'https://images.unsplash.com/photo-1529768167801-9173d94c2a42?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Baseball', 'Sports', 'Technique', 'Training'],
+      postedOn: new Date(),
     },
     {
       id: 4,
@@ -48,6 +53,7 @@ export class FeedComponent {
       imgSrc:
         'https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Angular', 'RxJS', 'Reactive Programming', 'JavaScript'],
+      postedOn: new Date(),
     },
     {
       id: 5,
@@ -57,6 +63,7 @@ export class FeedComponent {
       imgSrc:
         'https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Angular', 'Material Design', 'UI/UX', 'Web Development'],
+      postedOn: new Date(),
     },
     {
       id: 6,
@@ -66,6 +73,7 @@ export class FeedComponent {
       imgSrc:
         'https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Angular', 'Forms', 'Validation', 'Web Development'],
+      postedOn: new Date(),
     },
     {
       id: 7,
@@ -75,17 +83,9 @@ export class FeedComponent {
       imgSrc:
         'https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       tags: ['Angular', 'RxJS', 'Reactive Programming', 'JavaScript'],
+      postedOn: new Date(),
     },
   ];
 
   ctaLink: string = '';
 }
-
-type Blog = {
-  id: number;
-  title: string;
-  description: string;
-  imgSrc: string;
-  tags: string[];
-  // addedOn: Date;
-};

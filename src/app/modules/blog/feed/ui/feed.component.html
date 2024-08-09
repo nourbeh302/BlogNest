@@ -3,7 +3,10 @@
   <app-grid role="grid">
     @for (blog of blogs; track $index) {
     <div class="grid-item feed-item">
-      <img class="feed-item-image" [src]="blog.imgSrc" />
+      <img
+        class="feed-item-image image-fluid image-cover"
+        [src]="blog.imgSrc"
+      />
       <div class="feed-item-body">
         <div class="feed-item-tag-list">
           @for (tag of blog.tags; track $index) {
