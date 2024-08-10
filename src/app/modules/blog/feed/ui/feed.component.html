@@ -2,22 +2,7 @@
   <app-feed-heading></app-feed-heading>
   <app-grid role="grid">
     @for (blog of blogs(); track $index) {
-    <div class="grid-item feed-item">
-      <img
-        class="feed-item-image image-fluid image-cover"
-        [src]="blog.imgSrc"
-        loading="lazy"
-      />
-      <div class="feed-item-body">
-        <div class="feed-item-tag-list">
-          @for (tag of blog.tags; track $index) {
-          <span class="feed-item-tag chip">{{ tag }}</span>
-          }
-        </div>
-        <h3 class="feed-item-title">{{ blog.title }}</h3>
-        <app-button [ctaLink]="'blog/' + blog.id">Read more</app-button>
-      </div>
-    </div>
+    <app-feed-item [blog]="blog"></app-feed-item>
     }
   </app-grid>
 </div>

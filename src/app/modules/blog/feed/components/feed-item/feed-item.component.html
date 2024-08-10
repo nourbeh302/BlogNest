@@ -1,0 +1,26 @@
+<a [routerLink]="'blog/' + blog.id" class="grid-cta">
+  <div class="grid-item feed-item">
+    <img
+      class="feed-item-image image-fluid image-cover"
+      [ngSrc]="blog.imgSrc"
+      width="2070"
+      height="1380"
+      priority
+      style="height: 100%; width: 100%"
+    />
+    <div class="feed-item-body">
+      <div class="feed-item-tag-list">
+        @for (tag of blog.tags; track $index) {
+        <span class="feed-item-tag chip">{{ tag }}</span>
+        }
+      </div>
+      <h3 class="feed-item-title">{{ blog.title }}</h3>
+      <button class="button button-link button-w-icon">
+        <p class="button-text text-uppercase text-spaced text-bold">
+          Read More
+        </p>
+        <i class="button-icon ri-add-line"></i>
+      </button>
+    </div>
+  </div>
+</a>
