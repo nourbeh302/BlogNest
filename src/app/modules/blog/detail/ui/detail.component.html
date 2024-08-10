@@ -1,11 +1,23 @@
 <div class="container">
-  <h2 class="blog-title heading heading-02">{{ blog.title }}</h2>
+  <h2 class="blog-title heading heading-02">
+    {{ (blogAsObservable$ | async)?.title ?? "No title available" }}
+  </h2>
   <p class="blog-posted-by">Posted by Nour</p>
+  <button class="button" routerLink="/">Go back</button>
   <p class="blog-posted-on text-muted">
-    Posted on {{ blog.postedOn | date : "MMMM dd, yyyy" }}
+    Posted on
+    {{
+      ((blogAsObservable$ | async)?.postedOn | date : "MMMM dd, yyyy") ?? "N/A"
+    }}
   </p>
   <div class="blog-image">
-    <img class="image-fluid image-cover" [src]="blog.imgSrc" alt="blog-image" />
+    <img
+      class="image-fluid image-cover"
+      [src]="(blogAsObservable$ | async)?.imgSrc"
+      alt="blog-image"
+    />
   </div>
-  <p class="blog-description">{{ blog.description }}</p>
+  <article class="blog-description">
+    {{ (blogAsObservable$ | async)?.description ?? "No description available" }}
+  </article>
 </div>

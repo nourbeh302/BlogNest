@@ -1,11 +1,12 @@
 <div class="container">
   <app-feed-heading></app-feed-heading>
   <app-grid role="grid">
-    @for (blog of blogs; track $index) {
+    @for (blog of blogs(); track $index) {
     <div class="grid-item feed-item">
       <img
         class="feed-item-image image-fluid image-cover"
         [src]="blog.imgSrc"
+        loading="lazy"
       />
       <div class="feed-item-body">
         <div class="feed-item-tag-list">

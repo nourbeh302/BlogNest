@@ -14,3 +14,12 @@
 .blog-description {
   line-height: 1.7rem;
 }
+
+.blog-description::first-letter {
+  font-family: var(--text-ff-heading);
+  font-weight: 900;
+  margin-inline-start: 3rem;
+  margin-inline-end: 8px;
+  font-size: 86px;
+  initial-letter: 2;
+}

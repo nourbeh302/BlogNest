@@ -8,6 +8,12 @@ app-grid {
   }
 }
 
+.feed-item:first-child {
+  @media (width > 880px) {
+    grid-column: 1 / span 2;
+  }
+}
+
 .feed-item {
   display: grid;
   grid-template-rows: 300px auto;
