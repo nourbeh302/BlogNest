@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Blog } from '../../models/blog';
-import { map, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
-  private blogs: Blog[] = [
+  private blogs$: Observable<Blog[]> = of([
     {
       id: 1,
       title: 'Angular Performance Optimization Techniques: Best Practices',
@@ -78,17 +78,16 @@ export class BlogService {
       tags: ['Microbiome', 'Biology', 'Health'],
       postedOn: new Date(),
     },
-  ];
+  ]);
 
   constructor() {}
 
-  list(): Observable<Blog[]> {
-    return of(this.blogs);
-  }
+  getAll = (): Observable<Blog[]> => this.blogs$;
 
-  getOne(id: number): Observable<Blog | undefined> {
-    return of(this.blogs).pipe(
-      map((blogs) => blogs.find((blog) => blog.id == id))
+  getOne(id: number): Observable<Blog | null> {
+    return this.blogs$.pipe(
+      map((blogs) => blogs.find((blog) => blog?.id == id) as Blog | null),
+      catchError((_) => of(null))
     );
   }
 }

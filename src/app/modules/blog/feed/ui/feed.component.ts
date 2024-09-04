@@ -5,6 +5,8 @@ import { FeedCtaComponent } from '../components/feed-cta/feed-cta.component';
 import { Blog } from '../../../../core/models/blog';
 import { BlogService } from '../../../../core/services/blog/blog.service';
 import { FeedItemComponent } from '../components/feed-item/feed-item.component';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-feed',
@@ -14,16 +16,17 @@ import { FeedItemComponent } from '../components/feed-item/feed-item.component';
     FeedHeadingComponent,
     FeedCtaComponent,
     FeedItemComponent,
+    AsyncPipe,
   ],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.css',
 })
 export class FeedComponent {
-  ctaLink: string = '';
-  blogService: BlogService = inject(BlogService);
-  blogs: WritableSignal<Blog[]> = signal([]);
+  private blogService: BlogService = inject(BlogService);
 
-  ngOnInit() {
-    this.blogService.list().subscribe((blogs) => this.blogs.set(blogs));
+  blogs$: Observable<Blog[]>;
+
+  constructor() {
+    this.blogs$ = this.blogService.getAll();
   }
 }

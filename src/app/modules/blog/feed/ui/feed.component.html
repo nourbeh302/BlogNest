@@ -1,7 +1,7 @@
 <div class="container">
   <app-feed-heading></app-feed-heading>
   <app-grid role="grid">
-    @for (blog of blogs(); track $index) {
+    @for (blog of blogs$ | async; track $index) {
     <app-feed-item [blog]="blog"></app-feed-item>
     }
   </app-grid>

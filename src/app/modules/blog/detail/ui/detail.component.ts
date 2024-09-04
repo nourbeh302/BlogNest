@@ -3,7 +3,7 @@ import { Blog } from '../../../../core/models/blog';
 import { CommonModule, DatePipe, AsyncPipe } from '@angular/common';
 import { BlogService } from '../../../../core/services/blog/blog.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { map, switchMap } from 'rxjs';
+import { map, Observable, Subject, switchMap } from 'rxjs';
 import { toObservable } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -14,18 +14,22 @@ import { toObservable } from '@angular/core/rxjs-interop';
   styleUrls: ['./detail.component.css'],
 })
 export class DetailComponent {
-  blog: WritableSignal<Blog | undefined> = signal(undefined);
-  blogAsObservable$ = toObservable(this.blog);
+  private destroy$ = new Subject<void>();
+
+  blog$: Observable<Blog | null>;
 
   private blogService = inject(BlogService);
   private activatedRoute = inject(ActivatedRoute);
 
-  ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        map((params) => params['id']),
-        switchMap((id) => this.blogService.getOne(id))
-      )
-      .subscribe((blog) => this.blog.set(blog));
+  constructor() {
+    this.blog$ = this.activatedRoute.params.pipe(
+      map((params) => params['id']),
+      switchMap((id) => this.blogService.getOne(id))
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

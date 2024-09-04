@@ -51,11 +51,11 @@
   padding-block: 12px;
 }
 
-.grid-item:hover {
-  background: #efefef;
-}
-
 a.grid-cta {
   text-decoration: none;
   color: inherit;
+}
+
+.grid-item:hover a.grid-cta {
+  background: #efefef;
 }
